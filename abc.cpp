@@ -10,7 +10,8 @@ using namespace std;
                                                                     
          }
          void setter(){
-                
+         
+             int po;
                          cout<<"Enter name: ";
                          cin>>name;
                     // cout<<"You entered : "<<name;
