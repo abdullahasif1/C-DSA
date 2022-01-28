@@ -16,6 +16,11 @@ using namespace std;
                          cin>>name;
                     // cout<<"You entered : "<<name;
          }
+         void add(int x, int y){
+             int total=x+y;
+             cout<<"Total is "<<total;
+
+         }
 
 };
 
@@ -53,8 +58,11 @@ int main(){
     
     
     
-    
-    
+    int p,q;
+    cout<<"Enter two numbers to add ";
+    cin>>p;
+    cin>>q;
+    add(p,q);
     
     
     return 0;
