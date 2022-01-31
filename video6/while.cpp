@@ -13,5 +13,20 @@ using namespace std;
 
           }
 
+          cout<<"-Do While Loops starts from here-\n";
+
+      int num=0;
+      int sum=0;
+          cout<<"User must add positive numbers of which he needs the sum of or enter a negative number to end the program\n";
+          do{
+             sum += num;
+
+             cout<<"Enter a number: ";
+             cin>>num;
+          }
+          while(num>=0);
+    
+          cout<<"\nThe sum is "<<sum<<endl;
+
     return 0;
 }
