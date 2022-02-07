@@ -1,7 +1,7 @@
 **Finding through Functions
-**Prime numbers
-**Factorials
-**nCr 
-**Pascal Triangle
-**Fibonacci
+(Prime numbers
+--Factorials
+--nCr 
+--Pascal Triangle
+--Fibonacci)
 
