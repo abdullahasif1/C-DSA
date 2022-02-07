@@ -1,10 +1,11 @@
 #include<iostream>
 using namespace std;
-int fic(int a){
-    for(int i=a-1;i>0;i--){
-        a*=i;
-    }
-    return a;
+int factorial(int a){
+    int fac=1;
+        for(int i=2;i<=a;i++){
+            fac*=i;
+        }
+    return fac;
 }
 
 int main(){
@@ -14,7 +15,7 @@ int main(){
       cout<<"Enter the value of r: ";
       cin>>r;
 
-      int nCr = fic(n) /( fic(n-r) * fic(r));
+      int nCr = fac(n) /(fac(n-r) * fac(r));
       cout<<"Your Solution is: "<<nCr<<endl;
 
 
