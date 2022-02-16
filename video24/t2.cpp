@@ -1,37 +1,33 @@
 #include<iostream>
-#include<climits>
 using namespace std;
 int main(){
-    int x;
-    cout<<"Enter the length of ur array: ";
-    cin>>x;
-    int arr[x];
-    cout<<"Enter the elements in array...\n";
-    for(int i=0;i<x;i++){
+    int n;
+    cout<<"Enter the length of ur array:";
+    cin>>n;
+    int arr[n];
+    cout<<"Enter the elements of ur array...\n";
+    for(int i=0;i<n;i++){
         cin>>arr[i];
     }
-
-    const int N = 1e6;
-    int idx[N];
-
+    const int N=1e6;
+    bool check[N];
     for(int i=0;i<N;i++){
-        idx[i]=-1;
+        check[i]= false;
     }
 
-    int mini = INT_MAX;
-    for(int i=0;i<x;i++){
-        if(idx[arr[i]] == -1){
-            idx[arr[i]]=i;
-        }
-        else{
-            mini=min(mini,idx[arr[i]]);
+    for(int i=0;i<n;i++){
+        if(arr[i]>=0){
+            check[arr[i]]= true;
         }
     }
-    if(mini==INT_MAX){
-        cout<<"No Repeating element found!\n";
+    int sol=-1;
+    for(int i=0;i<N;i++){
+        if(check[i]==false){
+            sol=i;
+            break;
+        }
+
     }
-    else{
-        cout<<"Your repeating element whose indrx of first occurence is smallers is: "<<mini+1<<endl;
-    }
+    cout<<"Your smallest positive missing interger is: "<<sol<<endl;
     return 0;
 }
