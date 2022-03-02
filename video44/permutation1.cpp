@@ -27,7 +27,14 @@ int main(){
     for(auto &i : a)
         cin>>i;
 
-    permute(a,0);
+//    permute(a,0);       instead of using this we can STL function as well which is as below
+
+    sort(a.begin(),a.end());
+    do{
+        ans.push_back(a);
+    }while(next_permutation(a.begin(),a.end()));
+
+
     for(auto v : ans){
         for(auto i : v)
             cout<<i<<" ";
