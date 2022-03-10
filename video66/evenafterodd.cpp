@@ -38,15 +38,17 @@ void evenafterodd(node* &head){
     while(even->next!=NULL && odd->next!=NULL){
 
         odd->next=even->next;
+        cout<<"odd->next=even->next"<<endl;
         odd=odd->next;
         even->next=odd->next;
-        even=even->next;
-    }
+    
+    
 
-    odd->next=evenstart;       //linking last odd node with even node at the    start
     if(odd->next!=NULL){
-        even->next=NULL;         //if the evenstart is null so no node is      connexted with last node of odd nodes
+        even=even->next;         //if the evenstart is null so no node is      connexted with last node of odd nodes
     }
+    }
+    odd->next=evenstart;
 }
 void display(node* head){
     node* temp=head;
@@ -66,7 +68,7 @@ int main(){
     insertattail(head,4);
     insertattail(head,5);
     insertattail(head,6);
-    insertattail(head,7);
+   // insertattail(head,7);
     display(head);
 
     evenafterodd(head);              
