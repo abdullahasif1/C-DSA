@@ -39,6 +39,6 @@ int prefixtotal(string x){
     return obj.top();
 }
 int main(){
-    cout<<prefixtotal("-+7*45+20")<<endl;
+    cout<<prefixtotal("-5/63")<<endl;
     return 0;
 }
