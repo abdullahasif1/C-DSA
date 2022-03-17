@@ -6,11 +6,11 @@ class stack{
     
     queue<int> q1;
     queue<int> q2;
-    int sizeofStack=0;
+    int size=0;
     public:
 
     void push(int x){
-        sizeofStack++;
+        size++;
         q1.push(x);
         while(!q2.empty()){
             q1.push(q2.front());
@@ -28,7 +28,7 @@ class stack{
             return;
         }
         q2.pop();
-        sizeofStack--;
+        size--;
     }
 
     int top(){
@@ -47,6 +47,10 @@ class stack{
 
         cout<<"Not Empty!\n";
     }
+
+    int sizeofStack(){
+        return size;
+    }
 };
 
 int main(){
@@ -57,12 +61,14 @@ int main(){
     cout<<"s.top(): "<<s.top()<<endl;
     cout<<"s.empty()!: ";
     s.empty();
+    cout<<"s.sizeofStack(): "<<s.sizeofStack()<<endl;
     cout<<"s.pop()!\n";
     s.pop();
     cout<<"s.top(): "<<s.top()<<endl;
     cout<<"s.pop()!\n";
     s.pop();
 
+    cout<<"s.sizeofStack(): "<<s.sizeofStack()<<endl;
     cout<<"s.empty()!: ";
     s.empty();
     cout<<"s.top(): "<<s.top()<<endl;
