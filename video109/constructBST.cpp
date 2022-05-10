@@ -1,4 +1,5 @@
 #include<iostream>
+#include<limits.h>
 using namespace std;
 class Node{
     public:
@@ -11,19 +12,26 @@ class Node{
         }
 };
 
-Node* construstBST(int preorder[], int* Idx, int key, int min, int max, int n){
+Node* constructBST(int preorder[], int* Idx, int key, int min, int max, int n){
+    
+    if(*Idx>=n)                          //base condition
+        return NULL;
+
     Node* root=NULL;
     if(key>min && key<max){
         root = new Node(key);
         *Idx = *Idx+1;
-    }
+   
 
     if(*Idx<n)
-        root->left = constructBST(preorder, Idx, preorder[*Idx], min, key, n)
+        root->left = constructBST(preorder, Idx, preorder[*Idx], min, key, n);
     
     if(*Idx<n)
-        root->right = constructBST(preorder, Idx, preorder[*Idx], key, max, n)
-
+        root->right = constructBST(preorder, Idx, preorder[*Idx], key, max, n);
+   
+    }
+    
+    return root;
 }
 void inorder(Node* root){
     if(root==NULL)
