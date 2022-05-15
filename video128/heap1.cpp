@@ -28,6 +28,27 @@ class heap{
 
     void deletion(int pos){
 
+        if(size==0)
+            return;
+
+        arr[pos]=arr[size];   //changing places of removing ele with the last element in array
+        size--;
+
+        while(pos<size){
+            int lc=2*pos;      //left child
+            int rc=2*pos+1;    //right child
+
+            if(lc<size && arr[pos]<arr[lc]){
+                swap(arr[pos],arr[lc]);
+                pos=lc;
+            }
+            else if(rc<size && arr[pos]<arr[rc]){
+                swap(arr[pos],arr[rc]);
+                pos=rc;
+            }
+            else
+                return;
+        }
     }
 
 
@@ -53,6 +74,12 @@ int main(){
     a.insert(20);
     a.insert(30);
     a.insert(60);
+
+    a.print();
+    cout<<endl;
+
+    a.deletion(2);
+
 
     a.print();
     return 0;
