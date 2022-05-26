@@ -3,10 +3,10 @@
 using namespace std;
 int main(){
 
-    int n=0;
+    int n=0;                     //size of array
 
-    int k=0;
-    int countofss=0;
+    int k=0;                     //Sum K
+    int countofss=0;             //Smallest subsequence sount
 
 
 
