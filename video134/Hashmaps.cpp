@@ -33,5 +33,20 @@ int main(){
     cout<<um.at("Unknown")<<endl;        //after um[unknown], this will give 0
     
     
+    //size
+    cout<<um.size()<<endl;          //4(not 3)     as line31 creates an entry as well with 0 
+
+
+    //check if present
+    cout<<um.count("Abdullah")<<endl;   //if present=1/ if absent=0
+
+
+
+
+    //erase
+    um.erase("Asif");
+    cout<<um.size()<<endl;
+    
+    
     return 0;
 }
