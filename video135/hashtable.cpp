@@ -20,34 +20,54 @@ class node{
 void insertattail(node* ptr[],int index,int keyy,int value){
     node* n=new node(keyy,value);
 
-    //cout<<"Value of index: "<<index<<" Value of key: "<<keyy<<endl;
-
     if(ptr[index]==NULL){
         ptr[index]=n;
         node* tempp=ptr[index];
-      //  cout<<"Value of ptr[index]: "<<tempp->key<<endl;
+        return;
+    }
+    else{
+        node* temp= ptr[index];
+            while(temp->next!=NULL){
+                temp=temp->next;
+            }
+        temp->next=n;
+    }
+}
+
+
+int hashfunc(int keyy){
+    int idx=keyy%15;
+    return idx;
+}
+
+
+void deletenode(node* ptr[],int keyy){
+
+    int index=hashfunc(keyy);
+
+    if(ptr[index]==NULL){
+        cout<<"No node present to delete!"<<endl;
+        return;
+    }
+
+    node* n=ptr[index];
+    if(n->next==NULL && n->key==keyy){
+        node* todelete=n;
+        ptr[index]=NULL;
+        delete todelete;
         return;
     }
 
 
-    else{
-        node* temp= ptr[index];
-        //cout<<"Value of temp->data: "<<temp->next->key<<endl;
-            while(temp->next!=NULL){
-        //        cout<<"Value of Temp->data: "<<temp->key<<endl;
-                temp=temp->next;
-            }
-        temp->next=n;
-        //temp=temp->next;
-        //cout<<"Value of temp->key: "<<temp->key<<endl;
+    while(n->next->key != keyy){
+        n=n->next;
     }
+    node* todelete= n->next;
+    n->next=n->next->next;
+    delete todelete;
 }
 
 
-int hashfunc(int x){
-    x=0;
-    return x;
-}
 
 
 
@@ -58,7 +78,6 @@ void print(node* ptr[],int index){
         cout<<"No element at index "<<index<<endl;
     
     else{
-
         node* n=ptr[index];
         
         cout<<"Key "<<n->key<<endl;
@@ -74,19 +93,18 @@ void print(node* ptr[],int index){
 
 
 int main(){
-    node* ptr[1];
+    node* ptr[15];
 
     int keyy,value;
-    ptr[0]=NULL;
+    for(int i=0;i<15;i++)
+        ptr[i]=NULL;
+    
+    
     cout<<"Enter an key: ";
     cin>>keyy;
     cout<<"Enter a value: ";
     cin>>value;
-
-
     int index=hashfunc(keyy);
-    
-    
     insertattail(ptr,index,keyy,value);
 
     
@@ -96,27 +114,40 @@ int main(){
     cin>>keyy;
     cout<<"Enter a value: ";
     cin>>value;
-
+    index=hashfunc(keyy);
     insertattail(ptr,index,keyy,value);
-
+    
+    
+    
     cout<<"Enter an key: ";
     cin>>keyy;
     cout<<"Enter a value: ";
     cin>>value;
-
-
+    index=hashfunc(keyy);
     insertattail(ptr,index,keyy,value);
       
+
+
+
     cout<<"Enter an key: ";
     cin>>keyy;
     cout<<"Enter a value: ";
     cin>>value;
-
+    index=hashfunc(keyy);
     insertattail(ptr,index,keyy,value);
+
+
+
 
     print(ptr,index);
     
+    int todelete=0;
+    cout<<"Enter the element you want to delete: ";
+    cin>>todelete;
+    deletenode(ptr,todelete);
 
+    
+    print(ptr,index);
     return 0;
 }
 
