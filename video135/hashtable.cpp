@@ -40,6 +40,43 @@ int hashfunc(int keyy){
     return idx;
 }
 
+void getvalue(node* ptr[],int keyy){
+    int index=hashfunc(keyy);
+    node* n=ptr[index];
+
+    if(n->key==keyy)
+        cout<<"Value of key "<<keyy<<" is "<<n->value<<endl;
+    
+    while(n->next->key!=keyy){
+        n=n->next;
+    }
+    if(n->next==NULL)
+        cout<<"No key exits!\n";
+    else
+        cout<<"Value of key "<<keyy<<" is "<<n->next->value<<endl;
+}
+            
+                    
+            
+            
+void updatevalue(node* ptr[],int keyy,int val){
+     int index=hashfunc(keyy);
+     node* n=ptr[index];
+ 
+     if(n->key==keyy)
+         n->value=val;
+ 
+     while(n->next->key!=keyy){
+         n=n->next;
+     }
+     if(n->next==NULL)
+         cout<<"No key exits!\n";
+     else
+         n->next->value=val;
+ 
+ }
+
+
 
 void deletenode(node* ptr[],int keyy){
 
@@ -138,6 +175,21 @@ int main(){
 
 
 
+    cout<<"Enter an key: ";
+    cin>>keyy;
+    cout<<"Enter a value: ";
+    cin>>value;
+    index=hashfunc(keyy);
+    insertattail(ptr,index,keyy,value);
+
+
+    cout<<"Enter an key: ";
+    cin>>keyy;
+    cout<<"Enter a value: ";
+    cin>>value;
+    index=hashfunc(keyy);
+    insertattail(ptr,index,keyy,value);
+
 
     print(ptr,index);
     
@@ -148,6 +200,29 @@ int main(){
 
     
     print(ptr,index);
+
+
+
+    cout<<"Enter the key you want to get the value of: ";
+    cin>>keyy;
+
+    getvalue(ptr,keyy);
+
+
+
+
+    int val=-1;
+    cout<<"Enter the value of key you want to update the value of: ";
+    cin>>keyy;
+    cout<<"Enter the value you want to update: ";
+    cin>>val;
+
+    print(ptr,hashfunc(keyy));
+    updatevalue(ptr,keyy,val);
+
+    print(ptr,hashfunc(keyy));
+
+    //getvalue(ptr,keyy);
     return 0;
 }
 
